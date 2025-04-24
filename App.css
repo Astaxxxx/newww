@@ -1,0 +1,347 @@
+/* Main Application Styles */
+
+:root {
+    --primary-color: #6200ea;
+    --secondary-color: #03dac6;
+    --text-color: #333;
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --error-color: #b00020;
+    --success-color: #00c853;
+    --sidebar-width: 250px;
+    --header-height: 64px;
+  }
+  
+  /* Dark Mode Theme */
+  .dark-mode {
+    --text-color: #f5f5f5;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --primary-color: #bb86fc;
+    --secondary-color: #03dac6;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: var(--primary-color);
+    color: white;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  .header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-actions button {
+    margin-left: 10px;
+  }
+  
+  /* Main Container */
+  .main-container {
+    display: flex;
+    flex: 1;
+    margin-top: var(--header-height);
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--card-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 20px 0;
+    height: calc(100vh - var(--header-height));
+    position: fixed;
+    overflow-y: auto;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    padding: 15px 20px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .nav-item:hover {
+    background-color: rgba(98, 0, 234, 0.1);
+    border-left-color: var(--primary-color);
+  }
+  
+  .nav-item.active {
+    background-color: rgba(98, 0, 234, 0.2);
+    border-left-color: var(--primary-color);
+    font-weight: bold;
+  }
+  
+  .nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-icon {
+    margin-right: 10px;
+  }
+  
+  /* Main Content */
+  .content {
+    flex: 1;
+    padding: 20px;
+    margin-left: var(--sidebar-width);
+    transition: background-color 0.3s;
+  }
+  
+  /* Card Styles */
+  .card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-title {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  /* Button Styles */
+  .btn {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: #333;
+  }
+  
+  .btn-danger {
+    background-color: var(--error-color);
+    color: white;
+  }
+  
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.2s;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  
+  /* Checkbox container */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .checkbox-text {
+    margin-left: 8px;
+  }
+  
+  /* Setting description */
+  .setting-description {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #666;
+    margin-left: 24px;
+  }
+  
+  /* Loading State */
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+  }
+  
+  /* Login Page */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    padding: 20px;
+  }
+  
+  .login-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.3s;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .login-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .login-button:hover {
+    background-color: #5000d6;
+  }
+  
+  .error-message {
+    background-color: rgba(176, 0, 32, 0.1);
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  /* Chart container */
+  .chart-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 60px;
+      overflow: hidden;
+    }
+    
+    .sidebar-expanded {
+      width: var(--sidebar-width);
+    }
+    
+    .content {
+      margin-left: 60px;
+    }
+    
+    .content-sidebar-expanded {
+      margin-left: var(--sidebar-width);
+    }
+    
+    .nav-item {
+      padding: 15px 10px;
+    }
+    
+    .nav-text {
+      display: none;
+    }
+    
+    .sidebar-expanded .nav-text {
+      display: inline;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      padding: 0 10px;
+    }
+    
+    .header-logo {
+      font-size: 1.2rem;
+    }
+    
+    .content {
+      padding: 10px;
+    }
+    
+    .card {
+      padding: 15px;
+    }
+  }

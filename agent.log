@@ -1,0 +1,726 @@
+2025-04-22 21:28:35,150 - secure_sender - INFO - Secure sender initialized
+2025-04-22 21:28:35,151 - input_monitor - INFO - Input monitoring session started: 61384209-6a70-4afc-bf12-e6fc83bdaf0d
+2025-04-22 21:28:47,198 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:28:47,198 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:28:59,243 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:28:59,243 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:29:11,292 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:29:11,293 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:29:23,354 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:29:23,355 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:29:35,172 - input_monitor - INFO - Current APM: 49
+2025-04-22 21:29:35,405 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:29:35,405 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:29:47,448 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:29:47,448 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:29:59,485 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:29:59,485 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:30:11,524 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:30:11,524 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:30:23,598 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:30:23,598 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:30:35,203 - input_monitor - INFO - Current APM: 93
+2025-04-22 21:30:35,635 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:30:35,635 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:30:47,688 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:30:47,688 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:30:59,721 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:30:59,721 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:31:11,776 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:31:11,776 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:31:23,811 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:31:23,811 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:31:35,226 - input_monitor - INFO - Current APM: 16
+2025-04-22 21:31:35,848 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:31:35,848 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:31:47,870 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:31:47,870 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:31:59,936 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:31:59,936 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:32:11,964 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:32:11,964 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:32:23,999 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:32:23,999 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:32:35,248 - input_monitor - INFO - Current APM: 1
+2025-04-22 21:32:36,049 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:32:36,049 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:32:48,093 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:32:48,093 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:33:00,153 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:33:00,153 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:33:12,200 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:33:12,201 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:33:24,247 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:33:24,247 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:33:35,270 - input_monitor - INFO - Current APM: 0
+2025-04-22 21:33:36,314 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:33:36,314 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:33:48,380 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:33:48,380 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:34:00,441 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:34:00,441 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:34:12,486 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:34:12,486 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:34:24,575 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:34:24,575 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:34:35,294 - input_monitor - INFO - Current APM: 0
+2025-04-22 21:34:36,651 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:34:36,651 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:34:48,710 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:34:48,710 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:35:00,775 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:35:00,775 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:35:12,805 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:35:12,805 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:35:24,856 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:35:24,856 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:35:36,744 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-22 21:35:36,744 - input_monitor - WARNING - Failed to send data: None
+2025-04-22 21:35:36,744 - input_monitor - INFO - Input monitoring session ended: 61384209-6a70-4afc-bf12-e6fc83bdaf0d
+2025-04-23 10:32:27,440 - secure_sender - INFO - Secure sender initialized
+2025-04-23 10:32:27,441 - input_monitor - INFO - Input monitoring session started: 9cd9614a-5d4f-4c6a-ac8a-6bd9ea125d2e
+2025-04-23 10:32:39,547 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:32:39,547 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:32:51,615 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:32:51,616 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:33:03,687 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:33:03,687 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:33:15,757 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:33:15,757 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:33:27,460 - input_monitor - INFO - Current APM: 54
+2025-04-23 10:33:27,814 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:33:27,814 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:33:39,848 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:33:39,849 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:33:51,903 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:33:51,903 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:34:03,939 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:34:03,939 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:34:15,989 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:34:15,989 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:34:27,479 - input_monitor - INFO - Current APM: 50
+2025-04-23 10:34:28,055 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:34:28,055 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:34:40,107 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:34:40,107 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:34:52,176 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:34:52,176 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:35:04,205 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:35:04,205 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:35:16,248 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:35:16,248 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:35:27,511 - input_monitor - INFO - Current APM: 15
+2025-04-23 10:35:28,300 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:35:28,300 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:35:40,339 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:35:40,339 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:35:52,371 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:35:52,371 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:36:04,409 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:36:04,409 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:36:16,459 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:36:16,459 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:36:27,529 - input_monitor - INFO - Current APM: 71
+2025-04-23 10:36:28,506 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:36:28,506 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:36:40,553 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:36:40,553 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:36:52,635 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:36:52,636 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:37:04,675 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:37:04,676 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:37:16,731 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:37:16,731 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:37:27,572 - input_monitor - INFO - Current APM: 1
+2025-04-23 10:37:28,795 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:37:28,796 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:37:40,859 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:37:40,860 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:37:52,922 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:37:52,922 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:38:04,978 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:38:04,978 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:38:17,055 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:38:17,056 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:38:27,596 - input_monitor - INFO - Current APM: 0
+2025-04-23 10:38:29,116 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:38:29,116 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:38:41,187 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:38:41,188 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:38:53,248 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:38:53,248 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:39:05,314 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:39:05,314 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:39:17,366 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:39:17,366 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:39:27,621 - input_monitor - INFO - Current APM: 0
+2025-04-23 10:39:29,450 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:39:29,451 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:39:41,538 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:39:41,538 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:39:53,615 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:39:53,616 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:40:05,672 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:40:05,672 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:40:17,756 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:40:17,756 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:40:27,648 - input_monitor - INFO - Current APM: 0
+2025-04-23 10:40:29,825 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:40:29,825 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:40:41,893 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:40:41,893 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:40:53,931 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:40:53,931 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:41:05,994 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:41:05,994 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:41:18,052 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:41:18,052 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:41:27,671 - input_monitor - INFO - Current APM: 0
+2025-04-23 10:41:30,130 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:41:30,130 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:41:42,193 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:41:42,194 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:41:54,263 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:41:54,263 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:42:06,322 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:42:06,322 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:42:18,405 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:42:18,406 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:42:27,696 - input_monitor - INFO - Current APM: 0
+2025-04-23 10:42:30,470 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:42:30,470 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:42:42,541 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:42:42,541 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:42:54,589 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:42:54,589 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:43:06,658 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:43:06,658 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:43:18,734 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:43:18,734 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:43:27,720 - input_monitor - INFO - Current APM: 0
+2025-04-23 10:43:30,799 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:43:30,799 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:43:42,873 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:43:42,873 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:43:54,945 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:43:54,945 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:44:06,990 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:44:06,990 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:44:19,041 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:44:19,041 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:44:27,745 - input_monitor - INFO - Current APM: 4
+2025-04-23 10:44:31,090 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:44:31,090 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:44:43,149 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:44:43,149 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:44:55,210 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:44:55,210 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:45:07,258 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:45:07,258 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:45:19,346 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:45:19,346 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:45:27,766 - input_monitor - INFO - Current APM: 13
+2025-04-23 10:45:31,405 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:45:31,405 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:45:43,466 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:45:43,466 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:45:55,519 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:45:55,519 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:46:07,563 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:46:07,563 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:46:19,640 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:46:19,640 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:46:27,788 - input_monitor - INFO - Current APM: 25
+2025-04-23 10:46:31,686 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:46:31,686 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:46:43,743 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:46:43,744 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:46:55,832 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:46:55,832 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:47:07,906 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:47:07,906 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:47:19,971 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:47:19,971 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:47:27,808 - input_monitor - INFO - Current APM: 126
+2025-04-23 10:47:32,039 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:47:32,039 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:47:44,089 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:47:44,089 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:47:56,159 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:47:56,159 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:48:08,216 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:48:08,217 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:48:20,299 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:48:20,300 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:48:27,831 - input_monitor - INFO - Current APM: 67
+2025-04-23 10:48:32,363 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:48:32,363 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:48:44,438 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:48:44,440 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:48:56,490 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:48:56,490 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:49:08,572 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:49:08,572 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:49:20,635 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:49:20,635 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:49:27,887 - input_monitor - INFO - Current APM: 30
+2025-04-23 10:49:32,665 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:49:32,665 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:49:44,699 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:49:44,699 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:49:56,768 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:49:56,768 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:50:08,838 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:50:08,838 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:50:20,893 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:50:20,893 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:50:27,910 - input_monitor - INFO - Current APM: 84
+2025-04-23 10:50:32,944 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:50:32,944 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:50:45,000 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:50:45,000 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:50:57,063 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:50:57,063 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:51:09,138 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:51:09,138 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:51:21,199 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:51:21,199 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:51:27,937 - input_monitor - INFO - Current APM: 143
+2025-04-23 10:51:33,271 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:51:33,271 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:51:45,335 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:51:45,335 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:51:57,399 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:51:57,399 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:52:09,463 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:52:09,463 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:52:21,532 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:52:21,533 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:52:27,958 - input_monitor - INFO - Current APM: 128
+2025-04-23 10:52:33,581 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:52:33,582 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:52:35,891 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:52:35,892 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:52:35,892 - input_monitor - INFO - Input monitoring session ended: 9cd9614a-5d4f-4c6a-ac8a-6bd9ea125d2e
+2025-04-23 10:52:57,241 - secure_sender - INFO - Secure sender initialized
+2025-04-23 10:52:57,242 - input_monitor - INFO - Input monitoring session started: 4b93c27f-cb60-4398-8fab-45068d04b43a
+2025-04-23 10:53:09,294 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:53:09,294 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:53:21,369 - secure_sender - ERROR - Authentication failed: 400 - {
+  "error": "Client secret required for registration"
+}
+
+2025-04-23 10:53:21,369 - input_monitor - WARNING - Failed to send data: None
+2025-04-23 10:53:35,481 - secure_sender - ERROR - Authentication error: HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded with url: /api/auth/token (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002C8512E21E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-04-23 10:53:35,481 - input_monitor - WARNING - Failed to send data: None
