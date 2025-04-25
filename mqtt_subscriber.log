@@ -1,0 +1,29 @@
+2025-04-25 08:08:10,684 - mqtt_subscriber - INFO - MQTT subscriber started
+2025-04-25 08:08:10,684 - mqtt_subscriber - INFO - Connected to MQTT broker at localhost:1883
+2025-04-25 08:08:10,685 - mqtt_subscriber - INFO - Subscribed to topics: iot/gaming/mouse/+/data, /status, /security
+2025-04-25 08:08:30,922 - mqtt_subscriber - INFO - Updated status for device mouse-001: online
+2025-04-25 08:08:31,930 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 08:08:32,929 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 08:08:40,908 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 08:08:41,909 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 08:08:45,912 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 08:08:46,917 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 08:08:54,919 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 08:08:55,925 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 08:09:30,937 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 08:09:31,943 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 08:10:11,201 - mqtt_subscriber - INFO - Updated status for device mouse-001: offline
+2025-04-25 08:10:17,273 - mqtt_subscriber - WARNING - Disconnected from MQTT broker with code: 0
+2025-04-25 08:10:17,274 - mqtt_subscriber - INFO - MQTT subscriber stopped
+2025-04-25 10:04:43,061 - mqtt_subscriber - INFO - MQTT subscriber started
+2025-04-25 10:04:43,061 - mqtt_subscriber - INFO - Connected to MQTT broker at localhost:1883
+2025-04-25 10:04:43,062 - mqtt_subscriber - INFO - Subscribed to topics: iot/gaming/mouse/+/data, /status, /security
+2025-04-25 10:04:43,070 - mqtt_subscriber - INFO - Updated status for device mouse-001: offline
+2025-04-25 10:04:48,528 - mqtt_subscriber - INFO - Updated status for device mouse-001: online
+2025-04-25 10:05:13,536 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 10:05:14,537 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 10:05:32,544 - mqtt_subscriber - WARNING - Security alert from device mouse-001: attack_detected
+2025-04-25 10:05:33,544 - mqtt_subscriber - INFO - Security alert resolved for device mouse-001
+2025-04-25 10:05:38,090 - mqtt_subscriber - INFO - Updated status for device mouse-001: offline
+2025-04-25 10:05:43,147 - mqtt_subscriber - WARNING - Disconnected from MQTT broker with code: 0
+2025-04-25 10:05:43,148 - mqtt_subscriber - INFO - MQTT subscriber stopped

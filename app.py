@@ -22,6 +22,9 @@ from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 
+# Import routes
+import routes.security
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -43,6 +46,42 @@ app.config['CLIENT_SECRETS'] = {}  # Store client secrets (in memory for demonst
 app.iot_data = {}
 app.device_alerts = {}
 
+# Test data for simulated mouse
+app.iot_data['mouse-001'] = [
+    {
+        'device_id': 'mouse-001',
+        'session_id': 'test-session',
+        'timestamp': datetime.now().isoformat(),
+        'metrics': {
+            'clicks_per_second': 4,
+            'movements_count': 120,
+            'dpi': 16000,
+            'polling_rate': 1000,
+            'avg_click_distance': 42.5,
+            'button_count': 8
+        },
+        'status': {
+            'under_attack': False,
+            'attack_duration': 0,
+            'battery_level': 85,
+            'connection_quality': 95
+        }
+    }
+]
+
+# Add test security alerts
+app.device_alerts['mouse-001'] = [
+    {
+        'timestamp': datetime.now().isoformat(),
+        'event_type': 'attack_detected',
+        'details': {
+            'attack_type': 'ping_flood',
+            'intensity': 72,
+            'threshold': 50
+        },
+        'severity': 'critical'
+    }
+]
 # Initialize CORS with more permissive settings for development
 CORS(app, 
     resources={r"/*": {"origins": "*"}}, 
@@ -86,6 +125,14 @@ devices = {
         'client_secret': 'secret_2',
         'name': 'Gaming Keyboard',
         'device_type': 'keyboard',
+        'status': 'active',
+        'registered_at': datetime.utcnow().isoformat()
+    },
+    'mouse-001': {
+        'client_id': 'mouse-001',
+        'client_secret': 'secret_mouse',
+        'name': 'Gaming Mouse',
+        'device_type': 'mouse',
         'status': 'active',
         'registered_at': datetime.utcnow().isoformat()
     }
@@ -189,6 +236,20 @@ def log_security_event(event_type, details=None):
     
     security_events.append(event)
     logger.info(f"SECURITY EVENT: {event_type} - {details}")
+
+# Make the function accessible to the app
+app.log_security_event = log_security_event
+
+# Create a route_decorator object to pass to the security routes
+class RouteDecorator:
+    def __init__(self):
+        self.require_auth = require_auth
+        self.verify_signature = verify_signature
+        
+app.route_decorator = RouteDecorator()
+
+# Register security routes
+security_routes = routes.security.register_security_routes(app)
 
 # --------- Routes ---------
 
@@ -707,123 +768,66 @@ def update_user_settings():
         logger.error(f"Error updating user settings: {e}")
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
 
-# === NEW IOT ROUTES AND SECURITY ALERT ROUTES ===
 
-@app.route('/api/security/alert', methods=['POST', 'OPTIONS'])
-def receive_security_alert():
-    """Receive security alerts from IoT devices"""
+
+# Route to handle IoT device commands
+@app.route('/api/device/<device_id>/command', methods=['POST', 'OPTIONS'])
+@require_auth
+def send_device_command(device_id):
+    """Send a command to an IoT device"""
     # Handle OPTIONS request for CORS preflight
     if request.method == 'OPTIONS':
         return '', 204
         
     try:
         data = request.json
-        device_id = data.get('device_id')
-        event_type = data.get('event_type')
-        details = data.get('details')
+        command = data.get('command')
         
-        if not device_id or not event_type:
-            return jsonify({'error': 'Missing required fields'}), 400
+        if not command:
+            return jsonify({'error': 'Command required'}), 400
             
-        # Determine severity based on event type
-        severity = 'critical' if event_type == 'attack_detected' else 'warning'
-        
-        # Log the security event
-        logger.info(f"SECURITY EVENT: iot_{event_type} - {json.dumps(details)}")
-        security_events.append({
-            'timestamp': datetime.now().isoformat(),
-            'event_type': f'iot_{event_type}',
-            'ip_address': request.remote_addr,
-            'details': details,
-            'severity': severity
+        # Check if device exists
+        if device_id not in devices:
+            return jsonify({'error': 'Device not found'}), 404
+            
+        # In a real implementation, would send command to device via MQTT
+        # For demonstration, just log it
+        log_security_event('device_command', {
+            'device_id': device_id,
+            'command': command,
+            'parameters': data
         })
         
-        # Add to device-specific alerts list
-        if device_id not in app.device_alerts:
-            app.device_alerts[device_id] = []
-            
-        alert_data = {
-            'timestamp': datetime.now().isoformat(),
-            'event_type': event_type,
-            'details': details,
-            'severity': severity
-        }
-        
-        app.device_alerts[device_id].append(alert_data)
-        
-        # Keep only the latest 100 alerts per device
-        app.device_alerts[device_id] = app.device_alerts[device_id][-100:]
-        
-        return jsonify({'status': 'success'})
+        return jsonify({
+            'status': 'success', 
+            'message': f'Command {command} sent to device {device_id}'
+        })
         
     except Exception as e:
-        logger.error(f"Error processing security alert: {e}")
+        logger.error(f"Error sending device command: {e}")
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
 
-@app.route('/api/security/device_alerts/<device_id>', methods=['GET', 'OPTIONS'])
-@require_auth
-def get_device_alerts(device_id):
-    """Get security alerts for a specific device"""
-    # Handle OPTIONS request for CORS preflight
-    if request.method == 'OPTIONS':
-        return '', 204
-        
-    try:
-        if device_id not in app.device_alerts:
-            return jsonify({'alerts': []})
-            
-        return jsonify({'alerts': app.device_alerts[device_id]})
-        
-    except Exception as e:
-        logger.error(f"Error retrieving device alerts: {e}")
-        return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
+@app.route('/api/debug/iot_data/<device_id>', methods=['GET'])
+def debug_iot_data(device_id):
+    """Debug endpoint to view IoT data without authentication"""
+    if not hasattr(app, 'iot_data'):
+        return jsonify({'error': 'No IoT data storage initialized'}), 404
+    
+    if device_id not in app.iot_data:
+        return jsonify({'error': f'No data for device {device_id}'}), 404
+    
+    return jsonify({'data': app.iot_data[device_id]})
 
-@app.route('/api/metrics/iot_data', methods=['POST', 'OPTIONS'])
-def receive_iot_data():
-    """Receive IoT device data"""
-    # Handle OPTIONS request for CORS preflight
-    if request.method == 'OPTIONS':
-        return '', 204
-        
-    try:
-        data = request.json
-        device_id = data.get('device_id')
-        
-        if not device_id:
-            return jsonify({'error': 'Missing device ID'}), 400
-            
-        # Store the data (in a real implementation, would save to database)
-        if device_id not in app.iot_data:
-            app.iot_data[device_id] = []
-            
-        app.iot_data[device_id].append(data)
-        
-        # Keep only the latest 100 data points per device
-        app.iot_data[device_id] = app.iot_data[device_id][-100:]
-        
-        return jsonify({'status': 'success'})
-        
-    except Exception as e:
-        logger.error(f"Error processing IoT data: {e}")
-        return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
-
-@app.route('/api/metrics/iot_data/<device_id>', methods=['GET', 'OPTIONS'])
-@require_auth
-def get_iot_data(device_id):
-    """Get IoT device data"""
-    # Handle OPTIONS request for CORS preflight
-    if request.method == 'OPTIONS':
-        return '', 204
-        
-    try:
-        if device_id not in app.iot_data:
-            return jsonify({'data': []})
-            
-        return jsonify({'data': app.iot_data[device_id]})
-        
-    except Exception as e:
-        logger.error(f"Error retrieving IoT data: {e}")
-        return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
+@app.route('/api/debug/device_alerts/<device_id>', methods=['GET'])
+def debug_device_alerts(device_id):
+    """Debug endpoint to view device alerts without authentication"""
+    if not hasattr(app, 'device_alerts'):
+        return jsonify({'error': 'No device alerts storage initialized'}), 404
+    
+    if device_id not in app.device_alerts:
+        return jsonify({'error': f'No alerts for device {device_id}'}), 404
+    
+    return jsonify({'alerts': app.device_alerts[device_id]})
 
 # ------- Main application entry point -------
 
