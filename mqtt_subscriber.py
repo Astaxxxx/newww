@@ -103,6 +103,7 @@ class MQTTSubscriber:
             logger.info(f"Connected to MQTT broker at {self.mqtt_broker}:{self.mqtt_port}")
             
             # Subscribe to all IoT device topics
+            client.subscribe(f"{self.mqtt_topic_prefix}/+/security", qos=2)
             client.subscribe(f"{self.mqtt_topic_prefix}/+/data", qos=1)
             client.subscribe(f"{self.mqtt_topic_prefix}/+/status", qos=1)
             client.subscribe(f"{self.mqtt_topic_prefix}/+/security", qos=2)
