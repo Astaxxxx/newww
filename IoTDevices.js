@@ -1,6 +1,204 @@
 import React, { useState, useEffect } from 'react';
 import { fetchWithAuth, getIoTDeviceData, getDeviceSecurityAlerts } from '../utils/api';
 import './IoTDashboard.css';
+import MouseButtonHeatmap from '../components/MouseButtonHeatmap';
+
+// Separated Heatmap component
+const DeviceHeatmap = ({ deviceId }) => {
+  const [heatmapData, setHeatmapData] = useState(null);
+  const [heatmapType, setHeatmapType] = useState('position');
+  
+  useEffect(() => {
+    // Fetch heatmap data from the server
+    const fetchHeatmapData = async () => {
+      if (!deviceId) return;
+      
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch(`http://localhost:5000/api/metrics/iot_heatmap/${deviceId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch heatmap data');
+        }
+
+        const data = await response.json();
+        setHeatmapData(data);
+      } catch (err) {
+        console.error('Error fetching heatmap data:', err);
+        // Generate some dummy heatmap data if the API fails
+        generateDummyHeatmap();
+      }
+    };
+    
+    const generateDummyHeatmap = () => {
+      // Create a 108×192 grid (scaled down 1920×1080 by factor of 10)
+      const width = 192;
+      const height = 108;
+      const positionData = Array(height).fill().map(() => Array(width).fill(0));
+      const clickData = Array(height).fill().map(() => Array(width).fill(0));
+      
+      // Generate some random hotspots
+      // Center area (where most movement happens)
+      for (let i = 0; i < 5000; i++) {
+        const x = Math.floor(Math.random() * width * 0.6 + width * 0.2);
+        const y = Math.floor(Math.random() * height * 0.6 + height * 0.2);
+        positionData[y][x] += Math.random() * 2 + 1;
+        
+        // Clicks are less frequent
+        if (Math.random() < 0.3) {
+          clickData[y][x] += Math.random() * 5 + 1;
+        }
+      }
+      
+      // Add hotspots for common UI elements (top-left, bottom, etc.)
+      // Top-left (menu area)
+      for (let i = 0; i < 1000; i++) {
+        const x = Math.floor(Math.random() * width * 0.2);
+        const y = Math.floor(Math.random() * height * 0.2);
+        positionData[y][x] += Math.random() * 3 + 1;
+        if (Math.random() < 0.4) {
+          clickData[y][x] += Math.random() * 8 + 2;
+        }
+      }
+      
+      // Bottom center (action bar area)
+      for (let i = 0; i < 1000; i++) {
+        const x = Math.floor(Math.random() * width * 0.6 + width * 0.2);
+        const y = Math.floor(Math.random() * height * 0.2 + height * 0.8);
+        positionData[y][x] += Math.random() * 2 + 1;
+        if (Math.random() < 0.5) {
+          clickData[y][x] += Math.random() * 6 + 3;
+        }
+      }
+      
+      setHeatmapData({
+        position_heatmap: positionData,
+        click_heatmap: clickData,
+        resolution: {
+          width,
+          height
+        }
+      });
+    };
+    
+    fetchHeatmapData();
+    
+    // Refresh heatmap data periodically
+    const interval = setInterval(fetchHeatmapData, 5000);
+    return () => clearInterval(interval);
+  }, [deviceId]);
+  
+  if (!heatmapData) {
+    return (
+      <div className="card">
+        <h2 className="card-title">Mouse Movement Heatmap</h2>
+        <p>Loading heatmap data...</p>
+      </div>
+    );
+  }
+  
+  // Get the current heatmap based on user selection
+  const currentHeatmap = heatmapType === 'position' 
+    ? heatmapData.position_heatmap 
+    : heatmapData.click_heatmap;
+  
+  // Color mapping function
+  const getColor = (value) => {
+    // Color scale from blue (cold) to red (hot)
+    if (value === 0) return 'rgba(0, 0, 0, 0)'; // Transparent for no data
+    if (value < 10) return `rgba(0, 0, 255, ${value / 20})`;
+    if (value < 30) return `rgba(0, ${255 - (value - 10) * 8}, 255, 0.5)`;
+    if (value < 60) return `rgba(${(value - 30) * 8}, 255, ${255 - (value - 30) * 8}, 0.6)`;
+    if (value < 80) return `rgba(255, ${255 - (value - 60) * 12}, 0, 0.7)`;
+    return `rgba(255, 0, 0, 0.8)`;
+  };
+  
+  return (
+    <div className="card">
+      <h2 className="card-title">Screen Interaction Heatmap</h2>
+      <div style={{ marginBottom: '10px' }}>
+        <button 
+          className={`btn ${heatmapType === 'position' ? 'btn-primary' : ''}`}
+          onClick={() => setHeatmapType('position')}
+          style={{ marginRight: '10px' }}
+        >
+          Movement Heatmap
+        </button>
+        <button 
+          className={`btn ${heatmapType === 'click' ? 'btn-primary' : ''}`}
+          onClick={() => setHeatmapType('click')}
+        >
+          Click Heatmap
+        </button>
+      </div>
+      
+      <div style={{ 
+        position: 'relative',
+        width: '100%',
+        height: '300px',
+        border: '1px solid var(--border-color)',
+        borderRadius: '4px',
+        overflow: 'hidden',
+        backgroundColor: '#111'
+      }}>
+        {/* Visualization canvas */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'grid',
+          gridTemplateColumns: `repeat(${heatmapData.resolution.width}, 1fr)`,
+          gridTemplateRows: `repeat(${heatmapData.resolution.height}, 1fr)`
+        }}>
+          {currentHeatmap.flat().map((value, index) => {
+            const x = index % heatmapData.resolution.width;
+            const y = Math.floor(index / heatmapData.resolution.width);
+            return (
+              <div
+                key={`${x}-${y}`}
+                style={{
+                  backgroundColor: getColor(value),
+                  gridColumn: x + 1,
+                  gridRow: y + 1
+                }}
+              />
+            );
+          })}
+        </div>
+        
+        {/* Add a simulated game screen overlay for reference */}
+        <div style={{
+          position: 'absolute',
+          top: '10%',
+          left: '10%',
+          width: '80%',
+          height: '80%',
+          border: '1px dashed rgba(255, 255, 255, 0.3)',
+          borderRadius: '2px',
+          pointerEvents: 'none',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>Game Screen Area</span>
+        </div>
+      </div>
+      
+      <div style={{ marginTop: '15px' }}>
+        <p><strong>Heatmap Type:</strong> {heatmapType === 'position' ? 'Mouse Movement' : 'Mouse Clicks'}</p>
+        <p>This heatmap shows the distribution of {heatmapType === 'position' ? 'mouse movements' : 'mouse clicks'} across the screen, processed by the edge computing capabilities of the IoT mouse sensor.</p>
+        <p>The real-time data collection and processing demonstrates how IoT gaming peripherals can provide deeper insights into player behavior and performance.</p>
+      </div>
+    </div>
+  );
+};
 
 const IoTDevices = ({ user }) => {
   const [devices, setDevices] = useState([]);
@@ -162,203 +360,6 @@ const IoTDevices = ({ user }) => {
     }
   };
 
-  const renderHeatmap = () => {
-    const [heatmapData, setHeatmapData] = useState(null);
-    const [heatmapType, setHeatmapType] = useState('position'); // 'position' or 'click'
-    
-    useEffect(() => {
-      // Fetch heatmap data from the server
-      const fetchHeatmapData = async () => {
-        if (!selectedDevice) return;
-        
-        try {
-          const token = localStorage.getItem('authToken');
-          const response = await fetch(`http://localhost:5000/api/metrics/iot_heatmap/${selectedDevice}`, {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            }
-          });
-  
-          if (!response.ok) {
-            throw new Error('Failed to fetch heatmap data');
-          }
-  
-          const data = await response.json();
-          setHeatmapData(data);
-        } catch (err) {
-          console.error('Error fetching heatmap data:', err);
-          // Generate some dummy heatmap data if the API fails
-          generateDummyHeatmap();
-        }
-      };
-      
-      const generateDummyHeatmap = () => {
-        // Create a 108×192 grid (scaled down 1920×1080 by factor of 10)
-        const width = 192;
-        const height = 108;
-        const positionData = Array(height).fill().map(() => Array(width).fill(0));
-        const clickData = Array(height).fill().map(() => Array(width).fill(0));
-        
-        // Generate some random hotspots
-        // Center area (where most movement happens)
-        for (let i = 0; i < 5000; i++) {
-          const x = Math.floor(Math.random() * width * 0.6 + width * 0.2);
-          const y = Math.floor(Math.random() * height * 0.6 + height * 0.2);
-          positionData[y][x] += Math.random() * 2 + 1;
-          
-          // Clicks are less frequent
-          if (Math.random() < 0.3) {
-            clickData[y][x] += Math.random() * 5 + 1;
-          }
-        }
-        
-        // Add hotspots for common UI elements (top-left, bottom, etc.)
-        // Top-left (menu area)
-        for (let i = 0; i < 1000; i++) {
-          const x = Math.floor(Math.random() * width * 0.2);
-          const y = Math.floor(Math.random() * height * 0.2);
-          positionData[y][x] += Math.random() * 3 + 1;
-          if (Math.random() < 0.4) {
-            clickData[y][x] += Math.random() * 8 + 2;
-          }
-        }
-        
-        // Bottom center (action bar area)
-        for (let i = 0; i < 1000; i++) {
-          const x = Math.floor(Math.random() * width * 0.6 + width * 0.2);
-          const y = Math.floor(Math.random() * height * 0.2 + height * 0.8);
-          positionData[y][x] += Math.random() * 2 + 1;
-          if (Math.random() < 0.5) {
-            clickData[y][x] += Math.random() * 6 + 3;
-          }
-        }
-        
-        setHeatmapData({
-          position_heatmap: positionData,
-          click_heatmap: clickData,
-          resolution: {
-            width,
-            height
-          }
-        });
-      };
-      
-      fetchHeatmapData();
-      
-      // Refresh heatmap data periodically
-      const interval = setInterval(fetchHeatmapData, 5000);
-      return () => clearInterval(interval);
-    }, [selectedDevice]);
-    
-    if (!heatmapData) {
-      return (
-        <div className="card">
-          <h2 className="card-title">Mouse Movement Heatmap</h2>
-          <p>Loading heatmap data...</p>
-        </div>
-      );
-    }
-    
-    // Get the current heatmap based on user selection
-    const currentHeatmap = heatmapType === 'position' 
-      ? heatmapData.position_heatmap 
-      : heatmapData.click_heatmap;
-    
-    // Color mapping function
-    const getColor = (value) => {
-      // Color scale from blue (cold) to red (hot)
-      if (value === 0) return 'rgba(0, 0, 0, 0)'; // Transparent for no data
-      if (value < 10) return `rgba(0, 0, 255, ${value / 20})`;
-      if (value < 30) return `rgba(0, ${255 - (value - 10) * 8}, 255, 0.5)`;
-      if (value < 60) return `rgba(${(value - 30) * 8}, 255, ${255 - (value - 30) * 8}, 0.6)`;
-      if (value < 80) return `rgba(255, ${255 - (value - 60) * 12}, 0, 0.7)`;
-      return `rgba(255, 0, 0, 0.8)`;
-    };
-    
-    return (
-      <div className="card">
-        <h2 className="card-title">Mouse Movement Heatmap</h2>
-        <div style={{ marginBottom: '10px' }}>
-          <button 
-            className={`btn ${heatmapType === 'position' ? 'btn-primary' : ''}`}
-            onClick={() => setHeatmapType('position')}
-            style={{ marginRight: '10px' }}
-          >
-            Movement Heatmap
-          </button>
-          <button 
-            className={`btn ${heatmapType === 'click' ? 'btn-primary' : ''}`}
-            onClick={() => setHeatmapType('click')}
-          >
-            Click Heatmap
-          </button>
-        </div>
-        
-        <div style={{ 
-          position: 'relative',
-          width: '100%',
-          height: '300px',
-          border: '1px solid var(--border-color)',
-          borderRadius: '4px',
-          overflow: 'hidden',
-          backgroundColor: '#111'
-        }}>
-          {/* Visualization canvas */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            display: 'grid',
-            gridTemplateColumns: `repeat(${heatmapData.resolution.width}, 1fr)`,
-            gridTemplateRows: `repeat(${heatmapData.resolution.height}, 1fr)`
-          }}>
-            {currentHeatmap.flat().map((value, index) => {
-              const x = index % heatmapData.resolution.width;
-              const y = Math.floor(index / heatmapData.resolution.width);
-              return (
-                <div
-                  key={`${x}-${y}`}
-                  style={{
-                    backgroundColor: getColor(value),
-                    gridColumn: x + 1,
-                    gridRow: y + 1
-                  }}
-                />
-              );
-            })}
-          </div>
-          
-          {/* Add a simulated game screen overlay for reference */}
-          <div style={{
-            position: 'absolute',
-            top: '10%',
-            left: '10%',
-            width: '80%',
-            height: '80%',
-            border: '1px dashed rgba(255, 255, 255, 0.3)',
-            borderRadius: '2px',
-            pointerEvents: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}>
-            <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>Game Screen Area</span>
-          </div>
-        </div>
-        
-        <div style={{ marginTop: '15px' }}>
-          <p><strong>Heatmap Type:</strong> {heatmapType === 'position' ? 'Mouse Movement' : 'Mouse Clicks'}</p>
-          <p>This heatmap shows the distribution of {heatmapType === 'position' ? 'mouse movements' : 'mouse clicks'} across the screen, processed by the edge computing capabilities of the IoT mouse sensor.</p>
-          <p>The real-time data collection and processing demonstrates how IoT gaming peripherals can provide deeper insights into player behavior and performance.</p>
-        </div>
-      </div>
-    );
-  };
-  
-
   const fetchSecurityAlerts = async (deviceId) => {
     try {
       console.log("Fetching security alerts for device:", deviceId);
@@ -427,7 +428,6 @@ const IoTDevices = ({ user }) => {
         padding: '15px',
         borderRadius: '8px',
         backgroundColor: isAttacked ? 'rgba(176, 0, 32, 0.1)' : 'rgba(0, 200, 83, 0.1)',
-        // ...rest of your code
         border: `1px solid ${isAttacked ? 'var(--error-color)' : 'var(--success-color)'}`,
         marginBottom: '20px'
       }}>
@@ -719,7 +719,11 @@ const IoTDevices = ({ user }) => {
           {renderDeviceStatus()}
           {renderDeviceMetrics()}
           {renderSecurityAlerts()}
-          {renderHeatmap()}
+          <DeviceHeatmap deviceId={selectedDevice} />
+          {/* Add the new Mouse Button Usage Heatmap component */}
+          {devices.find(d => d.client_id === selectedDevice)?.device_type.includes('mouse') && (
+            <MouseButtonHeatmap deviceId={selectedDevice} />
+        )}
         </>
       ) : (
         <div className="card">
@@ -735,60 +739,60 @@ const IoTDevices = ({ user }) => {
         </div>
       )}
 
-      <div className="card">
-        <h2 className="card-title">IoT Security Recommendations</h2>
-        <ul>
-          <li>Keep IoT firmware updated with the latest security patches</li>
-          <li>Implement network segmentation to isolate IoT devices</li>
-          <li>Use strong, unique credentials for each device</li>
-          <li>Enable TLS for all device communication</li>
-          <li>Regularly audit device access and traffic patterns</li>
-          <li>Implement intrusion detection at the edge gateway</li>
-          <li>Ensure proper certificate management and rotation</li>
-        </ul>
-        
-        <div style={{ marginTop: '20px', padding: '15px', backgroundColor: 'rgba(98, 0, 234, 0.1)', borderRadius: '8px' }}>
-          <h3 style={{ margin: '0 0 10px 0' }}>DDoS Attack Protection for IoT Gaming Sensors</h3>
-          <p style={{ margin: '0 0 10px 0' }}>
-            This monitoring system implements a multilayered defense against various DDoS attacks targeting your gaming sensors:
-          </p>
-          <ol>
-            <li><strong>Edge Filtering:</strong> Attack traffic is detected and filtered at the sensor level before impacting performance</li>
-            <li><strong>Adaptive Rate Limiting:</strong> Dynamically adjusts traffic thresholds based on historical patterns</li>
-            <li><strong>Signature-Based Detection:</strong> Identifies known attack patterns and automatically applies countermeasures</li>
-            <li><strong>Anomaly Detection:</strong> Machine learning algorithms identify deviations from normal traffic</li>
-            <li><strong>Secure Bootstrapping:</strong> Devices use mutual authentication with the gateway to prevent impersonation</li>
-          </ol>
-        </div>
-      </div>
+<div className="card">
+       <h2 className="card-title">IoT Security Recommendations</h2>
+       <ul>
+         <li>Keep IoT firmware updated with the latest security patches</li>
+         <li>Implement network segmentation to isolate IoT devices</li>
+         <li>Use strong, unique credentials for each device</li>
+         <li>Enable TLS for all device communication</li>
+         <li>Regularly audit device access and traffic patterns</li>
+         <li>Implement intrusion detection at the edge gateway</li>
+         <li>Ensure proper certificate management and rotation</li>
+       </ul>
+       
+       <div style={{ marginTop: '20px', padding: '15px', backgroundColor: 'rgba(98, 0, 234, 0.1)', borderRadius: '8px' }}>
+         <h3 style={{ margin: '0 0 10px 0' }}>DDoS Attack Protection for IoT Gaming Sensors</h3>
+         <p style={{ margin: '0 0 10px 0' }}>
+           This monitoring system implements a multilayered defense against various DDoS attacks targeting your gaming sensors:
+         </p>
+         <ol>
+           <li><strong>Edge Filtering:</strong> Attack traffic is detected and filtered at the sensor level before impacting performance</li>
+           <li><strong>Adaptive Rate Limiting:</strong> Dynamically adjusts traffic thresholds based on historical patterns</li>
+           <li><strong>Signature-Based Detection:</strong> Identifies known attack patterns and automatically applies countermeasures</li>
+           <li><strong>Anomaly Detection:</strong> Machine learning algorithms identify deviations from normal traffic</li>
+           <li><strong>Secure Bootstrapping:</strong> Devices use mutual authentication with the gateway to prevent impersonation</li>
+         </ol>
+       </div>
+     </div>
 
-      <div className="card">
-        <h2 className="card-title">IoT Attack Simulation</h2>
-        <p>To test the security monitoring features of your IoT gaming sensors, you can simulate an attack using the following methods:</p>
-        
-        <div style={{ 
-          backgroundColor: 'var(--card-bg)', 
-          border: '1px solid var(--border-color)',
-          borderRadius: '5px',
-          padding: '15px',
-          fontFamily: 'monospace',
-          overflow: 'auto'
-        }}>
-          <p style={{ margin: '0 0 10px 0', fontWeight: 'bold' }}>DDoS simulation on IoT sensor gateway:</p>
-          <code>sudo hping3 -1 --flood -a [SPOOFED_IP] [SENSOR_GATEWAY_IP]</code>
-          <p style={{ margin: '10px 0 10px 0', fontWeight: 'bold' }}>Or using ping with large packets:</p>
-          <code>ping -f -s 65500 [SENSOR_GATEWAY_IP]</code>
-          <p style={{ margin: '10px 0 0 0', fontWeight: 'bold' }}>For a more distributed attack simulation:</p>
-          <code>sudo mdk3 [INTERFACE] d -c [CHANNEL] -s 1000</code>
-        </div>
-        
-        <p style={{ marginTop: '15px', fontSize: '0.9rem', color: 'var(--error-color)' }}>
-          <strong>Warning:</strong> Only perform these tests in your controlled lab environment against 
-          your own devices. Unauthorized DoS attacks are illegal and unethical.
-        </p>
-      </div>
-    </div>
-  );
+     <div className="card">
+       <h2 className="card-title">IoT Attack Simulation</h2>
+       <p>To test the security monitoring features of your IoT gaming sensors, you can simulate an attack using the following methods:</p>
+       
+       <div style={{ 
+         backgroundColor: 'var(--card-bg)', 
+         border: '1px solid var(--border-color)',
+         borderRadius: '5px',
+         padding: '15px',
+         fontFamily: 'monospace',
+         overflow: 'auto'
+       }}>
+         <p style={{ margin: '0 0 10px 0', fontWeight: 'bold' }}>DDoS simulation on IoT sensor gateway:</p>
+         <code>sudo hping3 -1 --flood -a [SPOOFED_IP] [SENSOR_GATEWAY_IP]</code>
+         <p style={{ margin: '10px 0 10px 0', fontWeight: 'bold' }}>Or using ping with large packets:</p>
+         <code>ping -f -s 65500 [SENSOR_GATEWAY_IP]</code>
+         <p style={{ margin: '10px 0 0 0', fontWeight: 'bold' }}>For a more distributed attack simulation:</p>
+         <code>sudo mdk3 [INTERFACE] d -c [CHANNEL] -s 1000</code>
+       </div>
+       
+       <p style={{ marginTop: '15px', fontSize: '0.9rem', color: 'var(--error-color)' }}>
+         <strong>Warning:</strong> Only perform these tests in your controlled lab environment against 
+         your own devices. Unauthorized DoS attacks are illegal and unethical.
+       </p>
+     </div>
+   </div>
+ );
 };
 
 export default IoTDevices;
